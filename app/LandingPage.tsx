@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Download } from 'lucide-react';
 import MainPage from './main-page/MainPage';
 
 // Header Logo component
@@ -72,6 +73,13 @@ function Header() {
             >
               Pricing
             </Link>
+            <Link
+              href="/download"
+              prefetch={true}
+              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors relative after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all hover:after:w-full"
+            >
+              Download
+            </Link>
           </nav>
 
           <div className="flex items-center space-x-4">
@@ -84,9 +92,12 @@ function Header() {
             </Link>
             <Button
               asChild
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-4 py-2 rounded-full shadow-sm"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-5 py-2 rounded-full shadow-sm"
             >
-              <Link href="/sign-up" prefetch={true}>Sign Up</Link>
+              <Link href="/download" prefetch={true}>
+                <Download className="mr-1.5 h-4 w-4" />
+                Download
+              </Link>
             </Button>
           </div>
         </div>
