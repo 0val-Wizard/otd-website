@@ -17,7 +17,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-const DMG_DOWNLOAD_PATH = '/otd-website/downloads/OTD.dmg';
+const DMG_DOWNLOAD_PATH = 'https://github.com/0val-Wizard/otd-website/releases/download/v1.0.0/OTD-0.1.0-arm64.dmg';
 
 function HeaderLogo() {
   return (
