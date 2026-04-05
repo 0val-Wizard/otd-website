@@ -17,7 +17,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-const DMG_DOWNLOAD_PATH = '/downloads/OTD.dmg';
+const DMG_DOWNLOAD_PATH = '/otd-website/downloads/OTD.dmg';
 
 function HeaderLogo() {
   return (
