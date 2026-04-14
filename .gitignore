@@ -14,5 +14,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# env
+# Installers are large (often >100MB; GitHub file limit). Copy OTD-0.1.0-arm64.dmg into
+# public/downloads/ before `next build` so it ships with the static site, or use Git LFS.
+# Alternatively set NEXT_PUBLIC_OTD_DMG_URL to an external HTTPS URL and omit the file here.
+public/downloads/*.dmg
+
+# env — never commit secrets (plain `.env` is common for local tooling)
+.env
 .env*.local
+.env.production

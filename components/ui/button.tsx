@@ -24,7 +24,7 @@ const buttonVariants = cva(
         success:
           "bg-chart-3 text-white shadow-lg shadow-chart-3/25 hover:bg-chart-3/90 hover:shadow-xl hover:-translate-y-0.5",
         gradient:
-          "bg-gradient-to-r from-primary to-orange-500 text-white shadow-lg shadow-primary/25 hover:from-primary/90 hover:to-orange-500/90 hover:shadow-xl hover:-translate-y-0.5",
+          "bg-gradient-to-r from-primary to-indigo-400 text-white shadow-lg shadow-primary/25 hover:from-primary/90 hover:to-indigo-400/90 hover:shadow-xl hover:-translate-y-0.5",
       },
       size: {
         default: "h-10 px-4 py-2",

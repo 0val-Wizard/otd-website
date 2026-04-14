@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { MarketingHeader } from '@/components/marketing-header';
 import {
   Download,
   CheckCircle,
@@ -17,95 +18,16 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-const DMG_DOWNLOAD_PATH = 'https://github.com/0val-Wizard/otd-website/releases/download/v1.0.0/OTD-0.1.0-arm64.dmg';
+/** Must match `basePath` in `website/next.config.ts`. */
+const WEBSITE_BASE_PATH = '/otd-website';
 
-function HeaderLogo() {
-  return (
-    <div className="flex items-center">
-      <div className="relative">
-        <svg width="32" height="32" viewBox="0 0 48 48" className="text-primary">
-          <g stroke="currentColor" strokeWidth="2" fill="none">
-            <line x1="24" y1="8" x2="24" y2="2" />
-            <line x1="32" y1="12" x2="36" y2="8" />
-            <line x1="40" y1="24" x2="46" y2="24" />
-            <line x1="32" y1="36" x2="36" y2="40" />
-            <line x1="24" y1="40" x2="24" y2="46" />
-            <line x1="16" y1="36" x2="12" y2="40" />
-            <line x1="8" y1="24" x2="2" y2="24" />
-            <line x1="16" y1="12" x2="12" y2="8" />
-          </g>
-          <circle cx="24" cy="24" r="6" fill="currentColor" />
-        </svg>
-      </div>
-      <div className="ml-3">
-        <h1 className="text-xl font-bold text-foreground tracking-wide">OWN THE DAY</h1>
-        <p className="text-xs text-muted-foreground font-medium tracking-wide -mt-1">PRODUCTIVITY</p>
-      </div>
-    </div>
-  );
-}
-
-function Header() {
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/60">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" prefetch={true} className="flex items-center">
-            <HeaderLogo />
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/#features"
-              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
-            >
-              Features
-            </Link>
-            <Link
-              href="/#how-it-works"
-              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
-            >
-              How It Works
-            </Link>
-            <Link
-              href="/pricing"
-              prefetch={true}
-              className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/download"
-              prefetch={true}
-              className="text-sm font-medium text-primary transition-colors"
-            >
-              Download
-            </Link>
-          </nav>
-
-          <div className="flex items-center space-x-4">
-            <Link
-              href="/sign-in"
-              prefetch={true}
-              className="hidden sm:inline-flex text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
-            >
-              Sign In
-            </Link>
-            <Button
-              asChild
-              className="bg-primary hover:bg-primary/90 text-primary-foreground text-sm px-5 py-2 rounded-full shadow-sm"
-            >
-              <a href={DMG_DOWNLOAD_PATH} download>
-                <Download className="mr-1.5 h-4 w-4" />
-                Download
-              </a>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-}
+/**
+ * Override with NEXT_PUBLIC_OTD_DMG_URL for an external CDN / GitHub Releases URL.
+ * Default serves the file from `public/downloads/` after `next build` (static export).
+ */
+const DMG_DOWNLOAD_PATH =
+  process.env.NEXT_PUBLIC_OTD_DMG_URL?.trim() ||
+  `${WEBSITE_BASE_PATH}/downloads/OTD-0.1.0-arm64.dmg`;
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -141,16 +63,21 @@ const features = [
 export default function DownloadPage() {
   return (
     <section className="flex flex-col min-h-screen">
-      <Header />
+      <MarketingHeader
+        activePage="download"
+        ctaHref={DMG_DOWNLOAD_PATH}
+        ctaLabel="Download"
+        ctaDownload
+      />
 
-      <div className="pt-16">
+      <div className="pt-[4.25rem]">
         <div className="min-h-screen bg-background">
           {/* Hero */}
           <section className="relative pt-20 pb-16 overflow-hidden">
-            <div className="absolute inset-0 gradient-bg-warm" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
-            <div className="absolute top-20 left-[10%] w-96 h-96 bg-gradient-to-br from-primary/20 to-orange-500/10 rounded-full blur-3xl blob-animate opacity-60" />
-            <div className="absolute top-40 right-[5%] w-80 h-80 bg-gradient-to-br from-chart-4/15 to-chart-5/10 rounded-full blur-3xl blob-animate opacity-50" style={{ animationDelay: '-2s' }} />
+            <div className="absolute inset-0 bg-background" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(230_80%_65%/0.06),transparent)]" />
+            <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-primary/[0.05] rounded-full blur-[120px] orb-float opacity-60" />
+            <div className="absolute top-[20%] right-[5%] w-[400px] h-[400px] bg-violet-500/[0.04] rounded-full blur-[100px] orb-float opacity-50" style={{ animationDelay: '-7s' }} />
 
             <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-6">
@@ -182,11 +109,11 @@ export default function DownloadPage() {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-2 gap-8">
                 {/* macOS Card */}
-                <Card className="relative overflow-hidden border-border/50 hover:border-primary/30 transition-all duration-300 card-hover">
-                  <div className="h-1.5 bg-gradient-to-r from-primary via-orange-500 to-amber-500" />
+                <Card className="card-premium relative overflow-hidden border-0 transition-all duration-300">
+                  <div className="h-1.5 bg-gradient-to-r from-primary to-indigo-400" />
                   <CardContent className="p-8">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary via-orange-500 to-amber-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/30">
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-violet-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
                         <AppleIcon className="w-8 h-8 text-white" />
                       </div>
                       <div>
@@ -207,7 +134,7 @@ export default function DownloadPage() {
                     <Button
                       asChild
                       size="lg"
-                      className="w-full h-14 text-base font-semibold bg-gradient-to-r from-primary via-orange-500 to-amber-500 hover:opacity-90 text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300 mb-6"
+                      className="btn-glow w-full h-14 text-base font-semibold bg-gradient-to-r from-primary to-indigo-400 hover:brightness-110 text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 mb-6 border-0"
                     >
                       <a href={DMG_DOWNLOAD_PATH} download>
                         <Download className="mr-2 h-5 w-5" />
@@ -236,7 +163,7 @@ export default function DownloadPage() {
                     </div>
 
                     <div className="flex items-center gap-2 mb-6">
-                      <Badge className="bg-amber-500/10 text-amber-600 border-amber-500/20 text-xs font-semibold">
+                      <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-semibold">
                         Coming Soon
                       </Badge>
                     </div>
@@ -286,8 +213,8 @@ export default function DownloadPage() {
                   },
                   {
                     step: '3',
-                    title: 'Launch & Sign In',
-                    description: 'Open OTD from Applications, sign in with your account, and you\'re all set.',
+                    title: 'Launch OTD',
+                    description: 'Open OTD from Applications, finish the quick setup, and start your first focus session.',
                   },
                 ].map((item) => (
                   <div key={item.step} className="relative text-center">
@@ -295,7 +222,7 @@ export default function DownloadPage() {
                       {item.step}
                     </div>
                     <div className="relative pt-8">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-orange-500 flex items-center justify-center mx-auto mb-5 shadow-lg">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-primary/15">
                         <span className="text-white font-bold text-lg">{item.step}</span>
                       </div>
                       <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
@@ -352,7 +279,7 @@ export default function DownloadPage() {
                     {features.map((feature) => (
                       <Card key={feature.label} className="border-border/50 hover:border-primary/20 transition-colors duration-200">
                         <CardContent className="p-5 flex items-start gap-4">
-                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-orange-500/10 flex items-center justify-center shrink-0 mt-0.5">
+                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                             <feature.icon className="w-5 h-5 text-primary" />
                           </div>
                           <div>
@@ -370,16 +297,16 @@ export default function DownloadPage() {
 
           {/* Bottom CTA */}
           <section className="py-20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground to-foreground/95" />
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-chart-4/20 rounded-full blur-3xl" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
+            <div className="absolute inset-0 bg-[hsl(230_16%_5%)]" />
+            <div className="absolute top-[-20%] left-[30%] w-[500px] h-[500px] bg-primary/[0.06] rounded-full blur-[120px] orb-float" />
+            <div className="absolute bottom-[-20%] right-[20%] w-[400px] h-[400px] bg-violet-500/[0.04] rounded-full blur-[100px] orb-float" style={{ animationDelay: '-10s' }} />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_100%)]" />
 
-            <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold text-background mb-4">
+            <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-[-0.02em]">
                 Ready to own your day?
               </h2>
-              <p className="text-lg text-background/70 mb-8 max-w-xl mx-auto">
+              <p className="text-lg text-white/45 mb-8 max-w-xl mx-auto leading-relaxed">
                 Download OTD now and start transforming your productivity in minutes.
               </p>
 
@@ -387,7 +314,7 @@ export default function DownloadPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-14 px-10 text-base font-semibold bg-gradient-to-r from-primary via-orange-500 to-amber-500 hover:opacity-90 text-white shadow-xl shadow-primary/40 transition-all duration-300"
+                  className="btn-glow h-14 px-10 text-base font-semibold bg-gradient-to-r from-primary to-indigo-400 hover:brightness-110 text-white shadow-xl shadow-primary/20 transition-all duration-300 rounded-xl border-0"
                 >
                   <a href={DMG_DOWNLOAD_PATH} download>
                     <Download className="mr-2 h-5 w-5" />
@@ -398,7 +325,7 @@ export default function DownloadPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="h-14 px-10 text-base font-semibold border-2 border-background/20 text-background hover:bg-background/10 transition-all duration-300"
+                    className="h-14 px-10 text-base font-semibold border-white/[0.12] text-white hover:bg-white/[0.06] transition-all duration-300 rounded-xl"
                   >
                     View Pricing
                     <ChevronRight className="ml-2 h-5 w-5" />
@@ -409,16 +336,17 @@ export default function DownloadPage() {
           </section>
 
           {/* Footer */}
-          <footer className="bg-foreground text-background py-10">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <footer className="relative bg-[hsl(230_16%_5%)] text-white py-10 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
+            <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-sm text-background/50">
+                <div className="text-xs text-white/25">
                   &copy; {new Date().getFullYear()} Own The Day. All rights reserved.
                 </div>
-                <div className="flex items-center gap-6 text-sm text-background/50">
-                  <Link href="/" className="hover:text-background transition-colors">Home</Link>
-                  <Link href="/pricing" className="hover:text-background transition-colors">Pricing</Link>
-                  <a href="mailto:hello@owntheday.com" className="hover:text-background transition-colors">Contact</a>
+                <div className="flex items-center gap-6 text-sm text-white/35">
+                  <Link href="/" className="hover:text-white/70 transition-colors duration-200">Home</Link>
+                  <Link href="/pricing" className="hover:text-white/70 transition-colors duration-200">Pricing</Link>
+                  <a href="mailto:hello@owntheday.com" className="hover:text-white/70 transition-colors duration-200">Contact</a>
                 </div>
               </div>
             </div>
