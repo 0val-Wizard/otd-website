@@ -27,7 +27,7 @@ const WEBSITE_BASE_PATH = '/otd-website';
  */
 const DMG_DOWNLOAD_PATH =
   process.env.NEXT_PUBLIC_OTD_DMG_URL?.trim() ||
-  `${WEBSITE_BASE_PATH}/downloads/OTD-0.1.0-arm64.dmg`;
+  `${WEBSITE_BASE_PATH}/downloads/OTD-0.1.0-universal.dmg`;
 
 function AppleIcon({ className }: { className?: string }) {
   return (
