@@ -118,7 +118,7 @@ export default function DownloadPage() {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold text-foreground">macOS</h2>
-                        <p className="text-sm text-muted-foreground">Version 1.0 &middot; .dmg installer</p>
+                        <p className="text-sm text-muted-foreground">Version 0.1.0 &middot; .dmg installer</p>
                       </div>
                     </div>
 
