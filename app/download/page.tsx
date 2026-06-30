@@ -18,9 +18,6 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-/** Must match `basePath` in `website/next.config.ts`. */
-const WEBSITE_BASE_PATH = '/otd-website';
-
 /**
  * Override with NEXT_PUBLIC_OTD_DMG_URL for an external CDN / GitHub Releases URL.
  * Default serves the file from `public/downloads/` after `next build` (static export).
@@ -57,7 +54,7 @@ const features = [
   { icon: Shield, label: 'Privacy-first', description: 'All data stays on your device by default' },
   { icon: Zap, label: 'Lightweight', description: 'Minimal CPU & memory footprint' },
   { icon: Brain, label: 'AI-Powered', description: 'Smart insights from local processing' },
-  { icon: Clock, label: 'Always Running', description: 'Quiet background activity monitoring' },
+  { icon: Clock, label: 'Quiet Support', description: 'Helpful focus context while you work' },
 ];
 
 export default function DownloadPage() {
@@ -97,8 +94,8 @@ export default function DownloadPage() {
                   <span className="block gradient-text py-2">your desktop</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  A native desktop app that runs quietly in the background, tracking your focus and
-                  helping you stay productive all day long.
+                  A native desktop app that helps you protect focus, review progress, and turn your
+                  workday into useful private insight.
                 </p>
               </div>
             </div>
@@ -297,16 +294,16 @@ export default function DownloadPage() {
 
           {/* Bottom CTA */}
           <section className="py-20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[hsl(230_16%_5%)]" />
+            <div className="absolute inset-0 bg-[hsl(225_20%_96%)]" />
             <div className="absolute top-[-20%] left-[30%] w-[500px] h-[500px] bg-primary/[0.06] rounded-full blur-[120px] orb-float" />
             <div className="absolute bottom-[-20%] right-[20%] w-[400px] h-[400px] bg-violet-500/[0.04] rounded-full blur-[100px] orb-float" style={{ animationDelay: '-10s' }} />
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_100%)]" />
 
             <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-[-0.02em]">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.02em]">
                 Ready to own your day?
               </h2>
-              <p className="text-lg text-white/45 mb-8 max-w-xl mx-auto leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
                 Download OTD now and start transforming your productivity in minutes.
               </p>
 
@@ -325,7 +322,7 @@ export default function DownloadPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="h-14 px-10 text-base font-semibold border-white/[0.12] text-white hover:bg-white/[0.06] transition-all duration-300 rounded-xl"
+                    className="h-14 px-10 text-base font-semibold border-foreground/[0.12] text-foreground hover:bg-foreground/[0.04] transition-all duration-300 rounded-xl"
                   >
                     View Pricing
                     <ChevronRight className="ml-2 h-5 w-5" />
@@ -336,17 +333,17 @@ export default function DownloadPage() {
           </section>
 
           {/* Footer */}
-          <footer className="relative bg-[hsl(230_16%_5%)] text-white py-10 overflow-hidden">
+          <footer className="relative bg-[hsl(225_20%_96%)] text-foreground py-10 overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
             <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-white/25">
+                <div className="text-xs text-muted-foreground">
                   &copy; {new Date().getFullYear()} Own The Day. All rights reserved.
                 </div>
-                <div className="flex items-center gap-6 text-sm text-white/35">
-                  <Link href="/" className="hover:text-white/70 transition-colors duration-200">Home</Link>
-                  <Link href="/pricing" className="hover:text-white/70 transition-colors duration-200">Pricing</Link>
-                  <a href="mailto:hello@owntheday.com" className="hover:text-white/70 transition-colors duration-200">Contact</a>
+                <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                  <Link href="/" className="hover:text-foreground transition-colors duration-200">Home</Link>
+                  <Link href="/pricing" className="hover:text-foreground transition-colors duration-200">Pricing</Link>
+                  <a href="mailto:hello@owntheday.com" className="hover:text-foreground transition-colors duration-200">Contact</a>
                 </div>
               </div>
             </div>
