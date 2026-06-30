@@ -5,11 +5,11 @@
   Dark-mode-first, ultra-premium aesthetic
   Inspired by Linear, Stripe, Vercel, Raycast
 */
-@custom-variant dark (&:is(.dark *));
+
 
 @plugin 'tailwindcss-animate';
 
-@variant dark (&:is(.dark *));
+
 
 @theme {
   --color-background: hsl(var(--background));
@@ -48,6 +48,7 @@
   --color-success-foreground: hsl(var(--success-foreground));
   --color-warning: hsl(var(--warning));
   --color-warning-foreground: hsl(var(--warning-foreground));
+  --font-sans: var(--font-geist-sans), 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -66,10 +67,11 @@
 
 @layer utilities {
   body {
-    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-geist-sans), 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    text-rendering: optimizeLegibility;
   }
   html {
     scroll-behavior: smooth;
@@ -99,14 +101,11 @@
   .glass {
     @apply bg-white/60 backdrop-blur-2xl border border-white/25 shadow-2xl;
   }
-  .dark .glass {
-    @apply bg-white/[0.04] border-white/[0.08];
-  }
+
 
   /* ─── Premium card with gradient border ─── */
   .card-premium {
     position: relative;
-    background: hsl(var(--card));
     border-radius: 1rem;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -133,6 +132,50 @@
     box-shadow:
       0 20px 40px -15px hsl(230 80% 60% / 0.10),
       0 0 0 1px hsl(230 80% 60% / 0.05);
+  }
+
+  /* ─── Clear primary download CTA ─── */
+  .download-cta {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid hsl(0 0% 100% / 0.24) !important;
+    background: linear-gradient(135deg, hsl(226 88% 54%) 0%, hsl(238 86% 59%) 52%, hsl(252 88% 64%) 100%) !important;
+    color: white !important;
+    box-shadow:
+      0 14px 30px hsl(232 80% 46% / 0.25),
+      inset 0 1px 0 hsl(0 0% 100% / 0.24);
+  }
+  .download-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, hsl(0 0% 100% / 0.18), transparent 54%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  .download-cta:hover {
+    background: linear-gradient(135deg, hsl(226 88% 49%) 0%, hsl(238 86% 55%) 52%, hsl(252 88% 60%) 100%) !important;
+    box-shadow:
+      0 18px 38px hsl(232 80% 46% / 0.32),
+      inset 0 1px 0 hsl(0 0% 100% / 0.28);
+  }
+  .download-cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    height: 1.625rem;
+    width: 1.625rem;
+    border-radius: 0.55rem;
+    background: hsl(0 0% 100% / 0.18);
+    box-shadow: inset 0 0 0 1px hsl(0 0% 100% / 0.22);
+  }
+  .download-cta--nav .download-cta-icon {
+    height: 1.375rem;
+    width: 1.375rem;
+    border-radius: 0.45rem;
   }
 
   /* ─── Glow button ─── */
@@ -212,10 +255,10 @@
   .animated-gradient {
     background: linear-gradient(
       -45deg,
-      hsl(230 16% 11%),
-      hsl(230 14% 14%),
-      hsl(250 15% 13%),
-      hsl(230 16% 11%)
+      hsl(230 16% 95%),
+      hsl(230 14% 97%),
+      hsl(250 15% 96%),
+      hsl(230 16% 95%)
     );
     background-size: 400% 400%;
     animation: gradient-shift 12s ease infinite;
@@ -246,6 +289,93 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1;
+  }
+
+  /* ─── Feature visual container (dark/black) ─── */
+  .feature-visual {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, hsl(230 80% 65% / 0.08), transparent 70%),
+      hsl(225 25% 8%);
+    border: 1px solid hsl(225 15% 18%);
+    border-radius: 0.875rem;
+    padding: 1.25rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    color: hsl(225 15% 90%);
+  }
+  .feature-visual:hover {
+    border-color: hsl(230 60% 50% / 0.4);
+    box-shadow: 0 0 24px hsl(230 80% 60% / 0.08);
+  }
+
+  /* ─── Signal flow card hover ─── */
+  .signal-card {
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .signal-card:hover {
+    border-color: var(--accent-border, hsl(230 60% 50% / 0.4)) !important;
+    box-shadow: 0 0 32px var(--accent-glow, hsl(230 80% 60% / 0.12)), 0 8px 24px hsl(225 25% 4% / 0.5);
+  }
+  /* Override text colors inside feature visuals for dark background */
+  .feature-visual .text-foreground {
+    color: hsl(225 15% 93%) !important;
+  }
+  .feature-visual .text-foreground\/60 {
+    color: hsl(225 10% 65%) !important;
+  }
+  .feature-visual .text-foreground\/80 {
+    color: hsl(225 12% 78%) !important;
+  }
+  .feature-visual .text-muted-foreground {
+    color: hsl(225 10% 55%) !important;
+  }
+  .feature-visual .text-muted-foreground\/70 {
+    color: hsl(225 10% 48%) !important;
+  }
+  .feature-visual .text-muted-foreground\/80 {
+    color: hsl(225 10% 52%) !important;
+  }
+  /* Adjust muted/card backgrounds inside feature visuals */
+  .feature-visual .bg-muted\/30,
+  .feature-visual .bg-muted\/20,
+  .feature-visual .bg-muted\/15 {
+    background-color: hsl(225 20% 14%) !important;
+  }
+  .feature-visual .bg-muted\/30:hover,
+  .feature-visual .bg-muted\/20:hover,
+  .feature-visual .bg-muted\/15:hover {
+    background-color: hsl(225 20% 16%) !important;
+  }
+  .feature-visual .bg-background\/60 {
+    background-color: hsl(225 20% 12%) !important;
+  }
+  .feature-visual .bg-card\/95 {
+    background-color: hsl(225 20% 12% / 0.95) !important;
+  }
+  /* Borders inside feature visuals */
+  .feature-visual .border-border\/35,
+  .feature-visual .border-border\/40,
+  .feature-visual .border-border\/30,
+  .feature-visual .border-border\/20 {
+    border-color: hsl(225 15% 20%) !important;
+  }
+  /* Ring color for timeline dots */
+  .feature-visual .ring-card {
+    --tw-ring-color: hsl(225 25% 8%) !important;
+  }
+
+  /* ─── Progress bar fill animation ─── */
+  @keyframes progress-fill {
+    from { width: 0%; }
+  }
+  .progress-animated {
+    animation: progress-fill 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* ─── Stagger children fade in ─── */
+  @keyframes stagger-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* ─── Text balance ─── */
@@ -308,49 +438,6 @@
     --sidebar-ring: 230 80% 58%;
   }
 
-  /* ═══════════════════════════════════════════════
-     DARK THEME TOKENS
-     ═══════════════════════════════════════════════ */
-  .dark {
-    --background: 230 16% 7%;
-    --foreground: 0 0% 96%;
-    --card: 230 16% 10%;
-    --card-foreground: 0 0% 96%;
-    --popover: 230 16% 10%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 230 80% 65%;
-    --primary-foreground: 230 16% 5%;
-    --primary-rgb: 100, 130, 235;
-    --secondary: 225 14% 16%;
-    --secondary-foreground: 225 14% 75%;
-    --muted: 230 16% 15%;
-    --muted-foreground: 230 5% 55%;
-    --accent: 230 35% 16%;
-    --accent-foreground: 230 80% 72%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-    --success: 160 60% 45%;
-    --success-foreground: 0 0% 100%;
-    --warning: 45 93% 55%;
-    --warning-foreground: 0 0% 10%;
-    --border: 230 16% 18%;
-    --input: 230 16% 18%;
-    --ring: 230 80% 65%;
-    --chart-1: 230 80% 65%;
-    --chart-2: 260 65% 60%;
-    --chart-3: 160 60% 48%;
-    --chart-4: 210 75% 60%;
-    --chart-5: 280 50% 65%;
-    --sidebar-background: 230 16% 6%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 230 80% 65%;
-    --sidebar-primary-foreground: 230 16% 5%;
-    --sidebar-accent: 230 35% 16%;
-    --sidebar-accent-foreground: 230 80% 72%;
-    --sidebar-border: 230 16% 16%;
-    --sidebar-ring: 230 80% 65%;
-    color-scheme: dark;
-  }
 }
 
 @theme inline {
