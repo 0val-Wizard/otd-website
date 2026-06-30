@@ -1,6 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check, Clock, HelpCircle, Shield, Sparkles, Target, Zap } from 'lucide-react';
+import { ArrowRight, Check, Clock, Download, HelpCircle, Shield, Sparkles, Target, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { MarketingHeader } from '@/components/marketing-header';
 
@@ -44,29 +44,29 @@ export default function PricingPage() {
 
           <div className="mx-auto mt-16 grid max-w-5xl gap-8 lg:grid-cols-2">
             <PricingCard
-              name="Base"
-              description="Perfect for building consistent focus habits without extra complexity."
-              price={8}
+              name="Pro"
+              description="Perfect for building consistent focus habits and tracking your daily coursework."
+              price="9.99"
               interval="month"
               trialDays={7}
               features={[
                 'Unlimited focus sessions',
                 'Basic distraction blocking',
                 'Daily analytics and insights',
-                'Goal tracking for up to 10 goals',
+                'Goal tracking for up to 10 projects',
                 'Email support',
               ]}
               popular={false}
             />
             <PricingCard
               name="Plus"
-              description="For professionals who want deeper visibility and proactive coaching."
-              price={12}
+              description="For ambitious students who want deeper project visibility and proactive study coaching."
+              price="12.90"
               interval="month"
               trialDays={7}
               features={[
-                'Everything in Base',
-                'AI-powered Work Buddy assistant',
+                'Everything in Pro',
+                'AI-powered study assistant',
                 'Advanced reports and trend analysis',
                 'Unlimited goals and projects',
                 'Calendar integration',
@@ -128,15 +128,15 @@ export default function PricingPage() {
         </section>
 
         <section className="relative overflow-hidden py-20">
-          <div className="absolute inset-0 bg-[hsl(230_16%_5%)]" />
+          <div className="absolute inset-0 bg-[hsl(225_20%_96%)]" />
           <div className="absolute left-[30%] top-[-20%] h-[500px] w-[500px] rounded-full bg-primary/[0.06] blur-[120px]" />
           <div className="absolute bottom-[-20%] right-[20%] h-[400px] w-[400px] rounded-full bg-violet-500/[0.04] blur-[100px]" />
 
           <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-[-0.02em] text-foreground sm:text-4xl">
               Ready to get started?
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/45">
+            <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">
               Start your free trial today and see where your focus really goes.
             </p>
 
@@ -144,15 +144,20 @@ export default function PricingPage() {
               <Button
                 asChild
                 size="lg"
-                className="btn-glow border-0 bg-gradient-to-r from-primary to-indigo-400 text-white shadow-xl shadow-primary/20"
+                className="download-cta btn-glow h-12 rounded-xl px-8 text-base font-semibold tracking-[0.01em] transition-all duration-300 hover:-translate-y-0.5"
               >
-                <Link href="/download">Download for Mac</Link>
+                <Link href="/download">
+                  <span className="download-cta-icon mr-2.5 flex items-center justify-center">
+                    <Download className="h-4 w-4" />
+                  </span>
+                  Download for Mac
+                </Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/[0.12] text-white hover:bg-white/[0.06]"
+                className="border-foreground/[0.12] text-foreground hover:bg-foreground/[0.04]"
               >
                 <a href="mailto:support@owntheday.com">
                   Contact our team
@@ -178,7 +183,7 @@ function PricingCard({
 }: {
   name: string;
   description: string;
-  price: number;
+  price: number | string;
   interval: string;
   trialDays: number;
   features: string[];
@@ -186,63 +191,63 @@ function PricingCard({
 }) {
   return (
     <div
-      className={`card-premium relative rounded-[1.5rem] bg-card/80 p-0 backdrop-blur-sm ${
+      className={`relative flex flex-col rounded-[2rem] p-8 sm:p-10 transition-all duration-300 hover:-translate-y-1 bg-zinc-950 text-white ${
         popular
-          ? 'border-0 shadow-2xl shadow-primary/10'
-          : 'border-0'
+          ? 'shadow-2xl shadow-indigo-500/10 ring-1 ring-white/20'
+          : 'ring-1 ring-white/10'
       }`}
     >
       {popular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-primary to-indigo-400 px-4 py-1.5 text-sm font-semibold text-white shadow-lg shadow-primary/20">
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 px-5 py-2 text-sm font-bold tracking-wide text-white shadow-xl shadow-indigo-500/25 ring-4 ring-background">
             <Sparkles className="w-4 h-4" />
-            Most Popular
+            MOST POPULAR
           </div>
         </div>
       )}
 
-      <div className="p-8 pt-10">
-        <div className="mb-6">
-          <h2 className="mb-2 text-2xl font-bold text-foreground">{name}</h2>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {description}
-          </p>
-        </div>
-
-        <div className="mb-8 rounded-2xl border border-border/40 bg-muted/[0.18] p-5">
-          <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-bold tracking-tight text-foreground">
-              ${price}
-            </span>
-            <span className="text-muted-foreground">/ {interval}</span>
-          </div>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Start with {trialDays}-day free trial
-          </p>
-        </div>
-
-        <ul className="space-y-4 mb-8">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-3">
-              <div className={`mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full ${
-                popular ? 'bg-primary/20' : 'bg-chart-3/20'
-              }`}>
-                <Check className={`h-3 w-3 ${popular ? 'text-primary' : 'text-chart-3'}`} />
-              </div>
-              <span className="text-foreground/80 text-sm leading-relaxed">{feature}</span>
-            </li>
-          ))}
-        </ul>
-
-        <Button
-          asChild
-          size="lg"
-          variant={popular ? 'gradient' : 'outline'}
-          className={`w-full ${popular ? 'border-0' : 'border-border/60 bg-background/70 hover:bg-muted/50'}`}
-        >
-          <Link href="/download">Download OTD</Link>
-        </Button>
+      <div className="mb-6 flex-1">
+        <h2 className="text-2xl font-bold tracking-tight mb-2">{name}</h2>
+        <p className="text-sm leading-relaxed text-zinc-400">
+          {description}
+        </p>
       </div>
+
+      <div className="mb-8 rounded-2xl p-6 bg-white/5 ring-1 ring-white/10">
+        <div className="flex items-baseline gap-2">
+          <span className="text-5xl font-bold tracking-tight">
+            ${price}
+          </span>
+          <span className="text-sm font-medium text-zinc-400">
+            / {interval}
+          </span>
+        </div>
+        <div className="mt-3 flex items-center gap-2 text-sm font-medium text-zinc-300">
+          <div className="h-1.5 w-1.5 rounded-full bg-green-400" />
+          Start with {trialDays}-day free trial
+        </div>
+      </div>
+
+      <ul className="space-y-4 mb-8 flex-1">
+        {features.map((feature, index) => (
+          <li key={index} className="flex items-start gap-3">
+            <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-white/10 text-zinc-300">
+              <Check className="h-3 w-3" />
+            </div>
+            <span className="text-sm leading-relaxed text-zinc-300">
+              {feature}
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <Button
+        asChild
+        size="lg"
+        className="w-full mt-auto rounded-xl font-semibold h-12 bg-white text-zinc-950 hover:bg-zinc-200"
+      >
+        <Link href="/download">Download OTD</Link>
+      </Button>
     </div>
   );
 }
