@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Download, Menu, Moon, Sun, X } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { useTheme } from '@/components/theme-provider';
+import { withBasePath } from '@/lib/site-url';
 
 type ActivePage = 'home' | 'pricing' | 'download';
 
@@ -30,34 +30,19 @@ const navLinks: Array<{
 ];
 
 export function OTDLogo({ size = 'default' }: { size?: 'default' | 'large' }) {
-  const iconDim = size === 'large' ? 22 : 18;
-
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex items-center gap-3">
       <div className="relative group">
         <div
           className={`${
-            size === 'large' ? 'h-11 w-11' : 'h-9 w-9'
-          } flex items-center justify-center rounded-xl bg-gradient-to-br from-primary to-violet-500 shadow-lg shadow-primary/15 transition-all duration-300 group-hover:shadow-primary/30`}
+            size === 'large' ? 'h-10 w-10' : 'h-8 w-8'
+          } flex items-center justify-center rounded-xl overflow-hidden shadow-lg shadow-primary/15 transition-all duration-300 group-hover:shadow-primary/30`}
         >
-          <svg
-            width={iconDim}
-            height={iconDim}
-            viewBox="0 0 48 48"
-            className="relative z-10 text-white"
-          >
-            <g stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none" opacity="0.9">
-              <line x1="24" y1="6" x2="24" y2="2" />
-              <line x1="35" y1="9" x2="38" y2="6" />
-              <line x1="42" y1="24" x2="46" y2="24" />
-              <line x1="35" y1="39" x2="38" y2="42" />
-              <line x1="24" y1="42" x2="24" y2="46" />
-              <line x1="13" y1="39" x2="10" y2="42" />
-              <line x1="6" y1="24" x2="2" y2="24" />
-              <line x1="13" y1="9" x2="10" y2="6" />
-            </g>
-            <circle cx="24" cy="24" r="8" fill="currentColor" />
-          </svg>
+          <img
+            src={withBasePath('/OTD_logo.png')}
+            alt="OWN THE DAY Logo"
+            className="h-full w-full object-cover"
+          />
         </div>
       </div>
       <span
@@ -71,50 +56,7 @@ export function OTDLogo({ size = 'default' }: { size?: 'default' | 'large' }) {
   );
 }
 
-function ThemeToggle({ mobile = false }: { mobile?: boolean }) {
-  const { theme, resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) {
-    return <div className={mobile ? 'h-11 w-full' : 'h-9 w-[132px]'} />;
-  }
-
-  const selectedTheme = theme === 'system' ? resolvedTheme : theme;
-  const wrapperClassName = mobile
-    ? 'grid w-full grid-cols-2 rounded-xl border border-border/60 bg-muted/30 p-1'
-    : 'grid grid-cols-2 rounded-xl border border-border/60 bg-background/70 p-1 shadow-sm backdrop-blur-sm';
-  const buttonClassName = (isActive: boolean) =>
-    `inline-flex items-center justify-center gap-1.5 rounded-lg px-2.5 py-2 text-sm font-medium transition-all duration-200 sm:gap-2 sm:px-3 ${
-      isActive
-        ? 'bg-foreground text-background shadow-sm'
-        : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
-    }`;
-
-  return (
-    <div className={wrapperClassName} aria-label="Theme selector">
-      <button
-        onClick={() => setTheme('light')}
-        className={buttonClassName(selectedTheme === 'light')}
-        aria-pressed={selectedTheme === 'light'}
-        title="Use light mode"
-      >
-        <Sun className="h-4 w-4" />
-        <span className={mobile ? '' : 'hidden sm:inline'}>Light</span>
-      </button>
-      <button
-        onClick={() => setTheme('dark')}
-        className={buttonClassName(selectedTheme === 'dark')}
-        aria-pressed={selectedTheme === 'dark'}
-        title="Use dark mode"
-      >
-        <Moon className="h-4 w-4" />
-        <span className={mobile ? '' : 'hidden sm:inline'}>Dark</span>
-      </button>
-    </div>
-  );
-}
 
 export function MarketingHeader({
   activePage = 'home',
@@ -147,18 +89,20 @@ export function MarketingHeader({
   }, []);
 
   const ctaClassName =
-    'btn-glow h-9 rounded-full border-0 bg-gradient-to-r from-primary to-indigo-400 px-5 text-sm font-semibold text-white shadow-md shadow-primary/15 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25';
+    'download-cta download-cta--nav btn-glow h-10 rounded-full px-3.5 pr-5 text-sm font-semibold tracking-[0.01em] transition-all duration-300 hover:-translate-y-0.5';
 
   const renderCta = (mobile = false) => {
     const className = mobile
-      ? 'w-full rounded-xl border-0 bg-gradient-to-r from-primary to-indigo-400 text-white shadow-lg shadow-primary/15'
+      ? 'download-cta btn-glow h-12 w-full rounded-xl px-4 text-sm font-semibold tracking-[0.01em] transition-all duration-300'
       : ctaClassName;
 
     if (ctaDownload) {
       return (
         <Button asChild size={mobile ? undefined : 'sm'} className={className}>
           <a href={ctaHref} download onClick={() => setMobileOpen(false)}>
-            <Download className="mr-2 h-4 w-4" />
+            <span className="download-cta-icon mr-2">
+              <Download className="h-3.5 w-3.5" />
+            </span>
             {ctaLabel}
           </a>
         </Button>
@@ -168,7 +112,9 @@ export function MarketingHeader({
     return (
       <Button asChild size={mobile ? undefined : 'sm'} className={className}>
         <Link href={ctaHref} onClick={() => setMobileOpen(false)}>
-          <Download className="mr-2 h-4 w-4" />
+          <span className="download-cta-icon mr-2">
+            <Download className="h-3.5 w-3.5" />
+          </span>
           {ctaLabel}
         </Link>
       </Button>
@@ -211,7 +157,6 @@ export function MarketingHeader({
           </nav>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             <div className="hidden sm:block">{renderCta()}</div>
             <button
               onClick={() => setMobileOpen((open) => !open)}
@@ -231,9 +176,6 @@ export function MarketingHeader({
             onClick={() => setMobileOpen(false)}
           />
           <div className="absolute left-0 right-0 top-[4.25rem] space-y-1 border-b border-border/40 bg-background/95 p-5 shadow-2xl backdrop-blur-2xl">
-            <div className="px-4 pb-3">
-              <ThemeToggle mobile />
-            </div>
             {navLinks.map((link) => {
               const isActive = link.page === activePage;
 
