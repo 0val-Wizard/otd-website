@@ -83,7 +83,7 @@ function Section({
    ═══════════════════════════════════════════════ */
 function HeroSection() {
   return (
-    <section className="relative min-h-[100dvh] pt-28 pb-24 overflow-hidden flex items-center">
+    <section className="relative min-h-[90dvh] pt-24 md:pt-32 pb-24 overflow-hidden">
       {/* ── Background layers ── */}
       <div className="absolute inset-0 bg-background" />
 
