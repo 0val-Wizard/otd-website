@@ -24,7 +24,7 @@ import {
  */
 const DMG_DOWNLOAD_PATH =
   process.env.NEXT_PUBLIC_OTD_DMG_URL?.trim() ||
-  "https://github.com/0val-Wizard/otd-website/releases/download/v0.1.0/OTD-0.1.0-universal.dmg";
+  "https://github.com/0val-Wizard/otd-website/releases/download/v0.1.0/OTD-0.1.0-arm64.dmg";
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -106,24 +106,25 @@ export default function DownloadPage() {
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-2 gap-8">
                 {/* macOS Card */}
-                <Card className="card-premium relative overflow-hidden border-0 transition-all duration-300">
-                  <div className="h-1.5 bg-gradient-to-r from-primary to-indigo-400" />
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-violet-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20">
+                <Card className="group relative overflow-hidden border border-primary/20 bg-background/60 backdrop-blur-xl transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(var(--primary),0.3)] hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-indigo-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary to-indigo-400" />
+                  <CardContent className="relative p-8 z-10">
+                    <div className="flex items-center gap-5 mb-8">
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-violet-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-500">
                         <AppleIcon className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-2xl font-bold text-foreground">macOS</h2>
-                        <p className="text-sm text-muted-foreground">Version 0.1.0 &middot; .dmg installer</p>
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground">macOS</h2>
+                        <p className="text-sm font-medium text-muted-foreground mt-1">Version 0.1.0 &middot; .dmg installer</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 mb-6">
-                      <Badge className="bg-chart-3/10 text-chart-3 border-chart-3/20 text-xs font-semibold">
+                    <div className="flex items-center gap-3 mb-8">
+                      <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-xs px-2.5 py-0.5 font-semibold">
                         Available Now
                       </Badge>
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="outline" className="text-xs px-2.5 py-0.5 border-primary/10 bg-primary/5 text-primary">
                         Apple Silicon &amp; Intel
                       </Badge>
                     </div>
@@ -131,36 +132,36 @@ export default function DownloadPage() {
                     <Button
                       asChild
                       size="lg"
-                      className="btn-glow w-full h-14 text-base font-semibold bg-gradient-to-r from-primary to-indigo-400 hover:brightness-110 text-white shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 mb-6 border-0"
+                      className="group w-full h-14 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
                     >
-                      <a href={DMG_DOWNLOAD_PATH} download>
+                      <a href={DMG_DOWNLOAD_PATH} download className="flex items-center justify-center w-full">
                         <Download className="mr-2 h-5 w-5" />
                         Download for macOS
                       </a>
                     </Button>
 
-                    <p className="text-xs text-muted-foreground text-center">
+                    <p className="text-xs font-medium text-muted-foreground/80 text-center">
                       Requires macOS 12 (Monterey) or later
                     </p>
                   </CardContent>
                 </Card>
 
                 {/* Windows Card */}
-                <Card className="relative overflow-hidden border-border/50 opacity-80">
-                  <div className="h-1.5 bg-gradient-to-r from-blue-500 via-blue-400 to-cyan-400" />
-                  <CardContent className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30">
+                <Card className="group relative overflow-hidden border border-border/40 bg-background/40 backdrop-blur-md transition-all duration-500 hover:border-border/80 hover:bg-background/60">
+                  <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500/50 via-blue-400/50 to-cyan-400/50 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+                  <CardContent className="relative p-8 z-10">
+                    <div className="flex items-center gap-5 mb-8 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-500">
                         <WindowsIcon className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-2xl font-bold text-foreground">Windows</h2>
-                        <p className="text-sm text-muted-foreground">.exe installer</p>
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground">Windows</h2>
+                        <p className="text-sm font-medium text-muted-foreground mt-1">.exe installer</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 mb-6">
-                      <Badge className="bg-primary/10 text-primary border-primary/20 text-xs font-semibold">
+                    <div className="flex items-center gap-3 mb-8 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                      <Badge variant="outline" className="bg-muted text-muted-foreground border-border/50 text-xs px-2.5 py-0.5 font-semibold">
                         Coming Soon
                       </Badge>
                     </div>
@@ -168,13 +169,13 @@ export default function DownloadPage() {
                     <Button
                       size="lg"
                       disabled
-                      className="w-full h-14 text-base font-semibold mb-6"
+                      className="w-full h-14 text-base font-bold bg-muted text-muted-foreground/80 cursor-not-allowed"
                     >
                       <Monitor className="mr-2 h-5 w-5" />
                       Windows Coming Soon
                     </Button>
 
-                    <p className="text-xs text-muted-foreground text-center">
+                    <p className="text-xs font-medium text-muted-foreground/70 text-center">
                       Windows 10 / 11 support is on the roadmap
                     </p>
                   </CardContent>
