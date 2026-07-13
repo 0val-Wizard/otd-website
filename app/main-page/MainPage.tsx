@@ -83,7 +83,7 @@ function Section({
    ═══════════════════════════════════════════════ */
 function HeroSection() {
   return (
-    <section className="relative min-h-[90dvh] pt-24 md:pt-32 pb-24 overflow-hidden">
+    <section className="relative py-4 overflow-hidden">
       {/* ── Background layers ── */}
       <div className="absolute inset-0 bg-background" />
 
@@ -110,7 +110,7 @@ function HeroSection() {
             {/* Badge with shimmer */}
             <div className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-primary/[0.06] border border-primary/[0.12] rounded-full text-sm font-medium text-primary backdrop-blur-sm shimmer">
               <Sparkles className="h-3.5 w-3.5" />
-              Now in public beta — free to try
+              public beta app — free to try
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold tracking-[-0.03em] text-foreground leading-[1.05] mb-7">
@@ -150,7 +150,7 @@ function HeroSection() {
 
             {/* Trust row */}
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-muted-foreground">
-              {['Free 7-day trial', 'No credit card', 'macOS (Windows soon)'].map((t) => (
+              {['Free 7-day trial', 'Productivity/Distraction Data', 'macOS (Windows soon)'].map((t) => (
                 <span key={t} className="flex items-center gap-1.5">
                   <CheckCircle className="h-3.5 w-3.5 text-primary/70" />
                   {t}
