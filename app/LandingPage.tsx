@@ -6,7 +6,7 @@ export default function LandingPage() {
   return (
     <section className="flex flex-col min-h-screen">
       <MarketingHeader activePage="home" ctaHref="/download" ctaLabel="Download" />
-      <div className="pt-[4.25rem]">
+      <div className="pt-[5rem]">
         <MainPage />
       </div>
     </section>
