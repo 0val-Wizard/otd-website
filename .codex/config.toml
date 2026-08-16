@@ -1,8 +1,2 @@
-# config.toml
-
-[instructions]
-# Load external rule/skill files directly
-files = [
-    ".codex/skills/frontend-design/SKILL.md",
-    ".codex/skills/ui-ux-pro-max/SKILL.md"
-]
+# .codex/config.toml
+# Skills placed inside .codex/skills/ are automatically discovered and loaded by Codex.
