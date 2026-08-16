@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { NavigationProgress } from '@/components/navigation-progress';
+import { SubtleMotion } from '@/components/subtle-motion';
 import { Suspense } from 'react';
 import { withBasePath } from '@/lib/site-url';
 
@@ -14,7 +15,7 @@ const geistSans = localFont({
 
 export const metadata: Metadata = {
   title: 'OTD - Own The Day',
-  description: 'Transform your productivity with AI-powered focus tools, private activity insight, and clear project progress.',
+  description: 'OTD helps uni and poly students track project progress, catch distractions, and understand study habits with private desktop data.',
   icons: {
     icon: withBasePath('/OTD_logo.png'),
     shortcut: withBasePath('/OTD_logo.png'),
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  maximumScale: 1,
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -40,6 +42,7 @@ export default function RootLayout({
         <Suspense>
           <NavigationProgress />
         </Suspense>
+        <SubtleMotion />
         {children}
       </body>
     </html>
