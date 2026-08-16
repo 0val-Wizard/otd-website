@@ -15,7 +15,6 @@ import {
   HardDrive,
   Monitor,
   ArrowLeft,
-  ChevronRight,
 } from 'lucide-react';
 
 /**
@@ -53,8 +52,8 @@ const systemRequirements = [
 const features = [
   { icon: Shield, label: 'Privacy-first', description: 'All data stays on your device by default' },
   { icon: Zap, label: 'Lightweight', description: 'Minimal CPU & memory footprint' },
-  { icon: Brain, label: 'AI-Powered', description: 'Smart insights from local processing' },
-  { icon: Clock, label: 'Quiet Support', description: 'Helpful focus context while you work' },
+  { icon: Brain, label: 'Study insights', description: 'Patterns from your real laptop activity' },
+  { icon: Clock, label: 'Focus Buddy', description: 'Quiet timer, drift count, and break rhythm' },
 ];
 
 export default function DownloadPage() {
@@ -67,64 +66,57 @@ export default function DownloadPage() {
         ctaDownload
       />
 
-      <div className="pt-[4.25rem]">
+      <div className="pt-[5rem]">
         <div className="min-h-screen bg-background">
           {/* Hero */}
-          <section className="relative pt-20 pb-16 overflow-hidden">
+          <section className="relative overflow-hidden pb-24 pt-24">
             <div className="absolute inset-0 bg-background" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(230_80%_65%/0.06),transparent)]" />
-            <div className="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-primary/[0.05] rounded-full blur-[120px] orb-float opacity-60" />
-            <div className="absolute top-[20%] right-[5%] w-[400px] h-[400px] bg-violet-500/[0.04] rounded-full blur-[100px] orb-float opacity-50" style={{ animationDelay: '-7s' }} />
+            <div className="surface-noise absolute inset-0" />
 
-            <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-6">
+            <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+              <div className="mb-12 text-center" data-reveal>
                 <Link
                   href="/"
-                  className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+                  className="mb-8 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 type-body-sm font-semibold text-muted-foreground ring-1 ring-black/[0.06] transition-colors hover:text-foreground"
                 >
                   <ArrowLeft className="h-4 w-4" />
-                  Back to home
+                  See what OTD does
                 </Link>
 
-                <Badge className="mb-6 px-4 py-2 bg-primary/10 text-primary border-primary/20 text-sm font-medium block w-fit mx-auto">
-                  Download OTD
-                </Badge>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6 leading-[1.1]">
-                  Get OTD for
-                  <span className="block gradient-text py-2">your desktop</span>
+                <p className="section-kicker">Download OTD</p>
+                <h1 className="section-title mx-auto mt-5 max-w-[9ch] text-foreground">
+                  Start tracking your project week.
                 </h1>
-                <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  A native desktop app that helps you protect focus, review progress, and turn your
-                  workday into useful private insight.
+                <p className="mx-auto mt-12 max-w-2xl type-section-copy text-muted-foreground">
+                  Install OTD on your Mac, create one project, and run a Focus Buddy session.
+                  The app turns study activity, distractions, and progress into a private timeline.
                 </p>
               </div>
             </div>
           </section>
 
           {/* OS Cards */}
-          <section className="relative -mt-4 pb-24">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid md:grid-cols-2 gap-8">
+          <section className="relative pb-32">
+            <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+              <div className="grid gap-y-12 md:grid-cols-2 md:gap-x-6">
                 {/* macOS Card */}
-                <Card className="group relative overflow-hidden border border-primary/20 bg-background/60 backdrop-blur-xl transition-all duration-500 hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(var(--primary),0.3)] hover:-translate-y-1">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-indigo-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary to-indigo-400" />
-                  <CardContent className="relative p-8 z-10">
-                    <div className="flex items-center gap-5 mb-8">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-violet-500 rounded-2xl flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform duration-500">
-                        <AppleIcon className="w-8 h-8 text-white" />
+                <Card className="group relative overflow-hidden rounded-[2rem] border-0 bg-zinc-950 text-white ring-1 ring-white/10 transition duration-300 hover:-translate-y-0.5" data-reveal>
+                  <CardContent className="relative z-10 px-8 py-12">
+                    <div className="mb-12 flex items-center gap-5">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-[1.4rem] bg-white text-black transition-transform duration-300 group-hover:scale-[1.02]">
+                        <AppleIcon className="w-8 h-8 text-black" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-bold tracking-tight text-foreground">macOS</h2>
-                        <p className="text-sm font-medium text-muted-foreground mt-1">Version 0.1.0 &middot; .dmg installer</p>
+                        <h2 className="type-platform-title font-bold text-white">macOS</h2>
+                        <p className="mt-1 type-body-sm font-medium text-white/50">Version 0.1.0 &middot; .dmg installer</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 mb-8">
-                      <Badge className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20 text-xs px-2.5 py-0.5 font-semibold">
+                    <div className="mb-12 flex flex-wrap items-center gap-x-3 gap-y-6">
+                      <Badge className="border-white/10 bg-white text-black type-caption px-2.5 py-0.5 font-bold">
                         Available Now
                       </Badge>
-                      <Badge variant="outline" className="text-xs px-2.5 py-0.5 border-primary/10 bg-primary/5 text-primary">
+                      <Badge variant="outline" className="border-white/15 bg-white/[0.06] px-2.5 py-0.5 type-caption font-semibold text-white">
                         Apple Silicon &amp; Intel
                       </Badge>
                     </div>
@@ -132,7 +124,7 @@ export default function DownloadPage() {
                     <Button
                       asChild
                       size="lg"
-                      className="group w-full h-14 text-base font-bold bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+                      className="h-14 w-full rounded-full bg-white type-body font-bold text-black hover:bg-white/90"
                     >
                       <a href={DMG_DOWNLOAD_PATH} download className="flex items-center justify-center w-full">
                         <Download className="mr-2 h-5 w-5" />
@@ -140,28 +132,27 @@ export default function DownloadPage() {
                       </a>
                     </Button>
 
-                    <p className="text-xs font-medium text-muted-foreground/80 text-center">
+                    <p className="mt-6 text-center type-caption font-medium text-white/45">
                       Requires macOS 12 (Monterey) or later
                     </p>
                   </CardContent>
                 </Card>
 
                 {/* Windows Card */}
-                <Card className="group relative overflow-hidden border border-border/40 bg-background/40 backdrop-blur-md transition-all duration-500 hover:border-border/80 hover:bg-background/60">
-                  <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500/50 via-blue-400/50 to-cyan-400/50 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                  <CardContent className="relative p-8 z-10">
-                    <div className="flex items-center gap-5 mb-8 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 via-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-500">
+                <Card className="group relative overflow-hidden rounded-[2rem] border-0 bg-white ring-1 ring-black/[0.06] transition duration-300 hover:-translate-y-0.5" data-reveal>
+                  <CardContent className="relative z-10 px-8 py-12">
+                    <div className="mb-12 flex items-center gap-5 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-[1.4rem] bg-black text-white transition-transform duration-300 group-hover:scale-[1.02]">
                         <WindowsIcon className="w-8 h-8 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-bold tracking-tight text-foreground">Windows</h2>
-                        <p className="text-sm font-medium text-muted-foreground mt-1">.exe installer</p>
+                        <h2 className="type-platform-title font-bold text-foreground">Windows</h2>
+                        <p className="mt-1 type-body-sm font-medium text-muted-foreground">.exe installer</p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 mb-8 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                      <Badge variant="outline" className="bg-muted text-muted-foreground border-border/50 text-xs px-2.5 py-0.5 font-semibold">
+                    <div className="mb-12 flex items-center gap-3 opacity-80 transition-opacity duration-300 group-hover:opacity-100">
+                      <Badge variant="outline" className="border-black/10 bg-muted type-caption font-semibold text-muted-foreground">
                         Coming Soon
                       </Badge>
                     </div>
@@ -169,13 +160,13 @@ export default function DownloadPage() {
                     <Button
                       size="lg"
                       disabled
-                      className="w-full h-14 text-base font-bold bg-muted text-muted-foreground/80 cursor-not-allowed"
+                      className="h-14 w-full cursor-not-allowed rounded-full bg-muted type-body font-bold text-muted-foreground/80"
                     >
                       <Monitor className="mr-2 h-5 w-5" />
                       Windows Coming Soon
                     </Button>
 
-                    <p className="text-xs font-medium text-muted-foreground/70 text-center">
+                    <p className="mt-6 text-center type-caption font-medium text-muted-foreground/70">
                       Windows 10 / 11 support is on the roadmap
                     </p>
                   </CardContent>
@@ -185,24 +176,23 @@ export default function DownloadPage() {
           </section>
 
           {/* Installation Guide */}
-          <section className="py-20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-muted/30" />
-            <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                  Install in <span className="gradient-text">3 easy steps</span>
+          <section className="relative overflow-hidden bg-muted/35 py-32">
+            <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+              <div className="mb-24 text-center" data-reveal>
+                <h2 className="type-subsection-display font-bold text-foreground">
+                  Install in 3 steps.
                 </h2>
-                <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                  Getting started with OTD takes less than a minute.
+                <p className="mx-auto mt-10 max-w-xl type-section-copy text-muted-foreground">
+                  Your first useful project timeline starts with one focused study block.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid gap-y-10 md:grid-cols-3 md:gap-x-5">
                 {[
                   {
                     step: '1',
                     title: 'Download',
-                    description: 'Click the download button above to get the OTD.dmg file.',
+                    description: 'Click the download button above to get the OTD .dmg file.',
                   },
                   {
                     step: '2',
@@ -212,19 +202,19 @@ export default function DownloadPage() {
                   {
                     step: '3',
                     title: 'Launch OTD',
-                    description: 'Open OTD from Applications, finish the quick setup, and start your first focus session.',
+                    description: 'Open OTD, create a semester project, and start your first focus session.',
                   },
                 ].map((item) => (
-                  <div key={item.step} className="relative text-center">
-                    <div className="text-[80px] font-bold text-primary/5 absolute -top-4 left-1/2 -translate-x-1/2 leading-none select-none">
+                  <div key={item.step} className="relative rounded-[2rem] bg-white px-6 py-10 text-center ring-1 ring-black/[0.06] transition duration-300 hover:-translate-y-0.5" data-reveal>
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 select-none font-mono type-step-ghost font-bold text-black/[0.04]">
                       {item.step}
                     </div>
-                    <div className="relative pt-8">
-                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-violet-500 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-primary/15">
-                        <span className="text-white font-bold text-lg">{item.step}</span>
+                    <div className="relative pt-10">
+                      <div className="mx-auto mb-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-black">
+                        <span className="type-card-title-sm font-bold text-white">{item.step}</span>
                       </div>
-                      <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed max-w-xs mx-auto">
+                      <h3 className="mb-5 type-card-title font-bold text-foreground">{item.title}</h3>
+                      <p className="mx-auto max-w-xs type-body text-muted-foreground">
                         {item.description}
                       </p>
                     </div>
@@ -235,29 +225,29 @@ export default function DownloadPage() {
           </section>
 
           {/* App Details: System Requirements + Features */}
-          <section className="py-20">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid lg:grid-cols-2 gap-12">
+          <section className="py-32">
+            <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+              <div className="grid gap-y-16 lg:grid-cols-2 lg:gap-x-8">
                 {/* System Requirements */}
-                <div>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <HardDrive className="w-5 h-5 text-primary" />
+                <div data-reveal>
+                  <div className="mb-12 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black">
+                      <HardDrive className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-2xl font-bold text-foreground">System Requirements</h2>
+                    <h2 className="type-subsection-title font-bold text-foreground">System Requirements</h2>
                   </div>
 
-                  <Card className="border-border/50">
+                  <Card className="rounded-[2rem] border-0 bg-white ring-1 ring-black/[0.06]">
                     <CardContent className="p-0">
                       {systemRequirements.map((req, index) => (
                         <div
                           key={req.label}
-                          className={`flex items-center justify-between px-6 py-4 ${
+                          className={`flex items-center justify-between px-6 py-6 ${
                             index < systemRequirements.length - 1 ? 'border-b border-border/50' : ''
                           }`}
                         >
-                          <span className="text-sm font-medium text-muted-foreground">{req.label}</span>
-                          <span className="text-sm font-semibold text-foreground">{req.value}</span>
+                          <span className="type-body-sm font-medium text-muted-foreground">{req.label}</span>
+                          <span className="type-body-sm font-semibold text-foreground">{req.value}</span>
                         </div>
                       ))}
                     </CardContent>
@@ -265,24 +255,24 @@ export default function DownloadPage() {
                 </div>
 
                 {/* What's Included */}
-                <div>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-10 h-10 rounded-xl bg-chart-3/10 flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 text-chart-3" />
+                <div data-reveal>
+                  <div className="mb-12 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black">
+                      <CheckCircle className="w-5 h-5 text-white" />
                     </div>
-                    <h2 className="text-2xl font-bold text-foreground">What&apos;s Included</h2>
+                    <h2 className="type-subsection-title font-bold text-foreground">What&apos;s Included</h2>
                   </div>
 
-                  <div className="grid gap-4">
+                  <div className="grid gap-y-8">
                     {features.map((feature) => (
-                      <Card key={feature.label} className="border-border/50 hover:border-primary/20 transition-colors duration-200">
-                        <CardContent className="p-5 flex items-start gap-4">
-                          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                            <feature.icon className="w-5 h-5 text-primary" />
+                      <Card key={feature.label} className="rounded-[1.5rem] border-0 bg-white ring-1 ring-black/[0.06] transition duration-300 hover:-translate-y-0.5">
+                        <CardContent className="flex items-start gap-4 px-5 py-7">
+                          <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-black">
+                            <feature.icon className="w-5 h-5 text-white" />
                           </div>
                           <div>
-                            <h3 className="font-semibold text-foreground mb-1">{feature.label}</h3>
-                            <p className="text-sm text-muted-foreground">{feature.description}</p>
+                            <h3 className="mb-3 type-panel-title font-semibold text-foreground">{feature.label}</h3>
+                            <p className="type-body-sm text-muted-foreground">{feature.description}</p>
                           </div>
                         </CardContent>
                       </Card>
@@ -294,56 +284,42 @@ export default function DownloadPage() {
           </section>
 
           {/* Bottom CTA */}
-          <section className="py-20 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[hsl(225_20%_96%)]" />
-            <div className="absolute top-[-20%] left-[30%] w-[500px] h-[500px] bg-primary/[0.06] rounded-full blur-[120px] orb-float" />
-            <div className="absolute bottom-[-20%] right-[20%] w-[400px] h-[400px] bg-violet-500/[0.04] rounded-full blur-[100px] orb-float" style={{ animationDelay: '-10s' }} />
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,black_30%,transparent_100%)]" />
+          <section className="relative overflow-hidden bg-black py-32 text-white sm:py-40">
+            <div className="surface-noise absolute inset-0 opacity-90 invert" />
 
-            <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.02em]">
-                Ready to own your day?
+            <div className="relative z-10 mx-auto max-w-4xl px-5 text-center sm:px-8 lg:px-10" data-reveal>
+              <h2 className="cta-title mx-auto max-w-[10ch]">
+                Start before your next sprint.
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-                Download OTD now and start transforming your productivity in minutes.
+              <p className="mx-auto mb-14 mt-12 max-w-xl type-section-copy text-white/62">
+                Download OTD now and turn your next project session into useful study data.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col justify-center gap-3 sm:flex-row">
                 <Button
                   asChild
                   size="lg"
-                  className="btn-glow h-14 px-10 text-base font-semibold bg-gradient-to-r from-primary to-indigo-400 hover:brightness-110 text-white shadow-xl shadow-primary/20 transition-all duration-300 rounded-xl border-0"
+                  className="h-14 rounded-full bg-white px-7 type-body font-bold text-black hover:bg-white/90"
                 >
                   <a href={DMG_DOWNLOAD_PATH} download>
-                    <Download className="mr-2 h-5 w-5" />
+                    <Download className="mr-2 h-4 w-4" />
                     Download for macOS
                   </a>
                 </Button>
-                <Link href="/pricing">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="h-14 px-10 text-base font-semibold border-foreground/[0.12] text-foreground hover:bg-foreground/[0.04] transition-all duration-300 rounded-xl"
-                  >
-                    View Pricing
-                    <ChevronRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
               </div>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="relative bg-[hsl(225_20%_96%)] text-foreground py-10 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent" />
-            <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-xs text-muted-foreground">
+          <footer className="relative overflow-hidden bg-muted/45 py-16 text-foreground">
+            <div className="surface-noise absolute inset-0 opacity-50" />
+            <div className="relative mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+              <div className="flex flex-col items-center justify-between gap-y-8 sm:flex-row sm:gap-x-4">
+                <div className="type-caption text-muted-foreground">
                   &copy; {new Date().getFullYear()} Own The Day. All rights reserved.
                 </div>
-                <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-6 type-body-sm text-muted-foreground">
                   <Link href="/" className="hover:text-foreground transition-colors duration-200">Home</Link>
-                  <Link href="/pricing" className="hover:text-foreground transition-colors duration-200">Pricing</Link>
                   <a href="mailto:hello@owntheday.com" className="hover:text-foreground transition-colors duration-200">Contact</a>
                 </div>
               </div>
