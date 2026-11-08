@@ -204,10 +204,10 @@ function HeroArtifact() {
 
 function HeroSection() {
   return (
-    <section className="student-hero relative overflow-hidden pt-14 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
+    <section className="student-hero relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-24 lg:pb-20">
       <div className="surface-noise absolute inset-0" />
 
-      <div className="relative mx-auto max-w-[92rem] px-5 sm:px-8 lg:px-10">
+      <div className="relative mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-10">
         <div className="grid min-w-0 gap-y-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-x-12">
           <div className="relative z-10 min-w-0 max-w-full">
             <div
