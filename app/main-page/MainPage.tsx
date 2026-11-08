@@ -64,7 +64,7 @@ const habits = [
 function HeroArtifact() {
   return (
     <div className="viewport-artifact relative mx-auto w-full min-w-0" data-hero-item>
-      <div className="absolute -left-20 xl:-left-36 -top-6 xl:-top-8 z-20 hidden w-44 rounded-[1.35rem] bg-white p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
+      <div className="absolute -left-10 lg:-left-12 xl:-left-14 -top-8 xl:-top-10 z-20 hidden w-44 2xl:w-48 rounded-[1.35rem] bg-white p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
         <div className="flex items-center gap-2 type-label font-bold text-black/45">
           <TriangleAlert className="h-4 w-4 text-[#f4a43d]" />
           Drift
@@ -73,7 +73,7 @@ function HeroArtifact() {
         <p className="mt-2 type-caption text-black/55">YouTube appeared between research and slide work.</p>
       </div>
 
-      <div className="absolute -right-6 xl:-right-12 -bottom-12 xl:-bottom-16 z-20 hidden w-52 rounded-[1.35rem] bg-[#f6f2e8] p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
+      <div className="absolute -right-6 lg:-right-8 xl:-right-10 -bottom-10 xl:-bottom-12 z-20 hidden w-52 2xl:w-56 rounded-[1.35rem] bg-[#f6f2e8] p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
         <div className="flex items-center gap-2 type-label font-bold text-black/45">
           <CalendarClock className="h-4 w-4 text-[#7f70f1]" />
           Due next
@@ -207,11 +207,11 @@ function HeroSection() {
     <section className="student-hero relative flex min-h-[100dvh] flex-col justify-center overflow-hidden pt-20 pb-16 sm:pt-24 sm:pb-20 lg:pt-24 lg:pb-20">
       <div className="surface-noise absolute inset-0" />
 
-      <div className="relative mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-10">
-        <div className="grid min-w-0 gap-y-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-x-12">
+      <div className="relative mx-auto w-full max-w-[92rem] xl:max-w-[104rem] 2xl:max-w-[116rem] 3xl:max-w-[128rem] px-5 sm:px-8 lg:px-10 xl:px-12 2xl:px-16">
+        <div className="grid min-w-0 gap-y-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-x-12 xl:gap-x-16 2xl:gap-x-20">
           <div className="relative z-10 min-w-0 max-w-full">
             <div
-              className="mb-4 sm:mb-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 type-body-sm font-semibold text-black shadow-[0_1px_0_rgba(0,0,0,0.06)] ring-1 ring-black/[0.06]"
+              className="mb-4 sm:mb-5 2xl:mb-7 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 type-body-sm font-semibold text-black shadow-[0_1px_0_rgba(0,0,0,0.06)] ring-1 ring-black/[0.06]"
               data-hero-item
             >
               <span className="h-2 w-2 rounded-full bg-[#f4a43d]" />
@@ -222,19 +222,19 @@ function HeroSection() {
               Own the semester before it owns you.
             </h1>
 
-            <p className="viewport-safe mt-5 sm:mt-6 type-section-copy text-black/62" data-hero-item>
+            <p className="viewport-safe mt-5 sm:mt-6 2xl:mt-8 type-section-copy xl:text-[1.25rem] 2xl:text-[1.35rem] 2xl:leading-relaxed text-black/62" data-hero-item>
               OTD turns your laptop work into a private timeline for projects, focus sessions,
               distractions, and study patterns so you can see what actually moved this week.
             </p>
 
-            <div className="viewport-safe mt-6 sm:mt-8 flex flex-col gap-y-4 sm:flex-row sm:items-center sm:gap-x-3" data-hero-item>
+            <div className="viewport-safe mt-6 sm:mt-8 2xl:mt-10 flex flex-col gap-y-4 sm:flex-row sm:items-center sm:gap-x-3" data-hero-item>
               <DownloadCTA />
-              <p className="max-w-xs type-body-sm text-black/52">
+              <p className="max-w-xs type-body-sm 2xl:type-body text-black/52">
                 macOS beta. Built for students juggling deadlines, group work, and late-night drift.
               </p>
             </div>
 
-            <div className="mt-6 sm:mt-8 hidden max-w-xl grid-cols-1 gap-y-4 type-body-sm font-medium text-black/58 sm:grid sm:grid-cols-3 sm:gap-x-3" data-hero-item>
+            <div className="mt-6 sm:mt-8 2xl:mt-12 hidden max-w-xl 2xl:max-w-2xl grid-cols-1 gap-y-4 type-body-sm 2xl:type-body font-medium text-black/58 sm:grid sm:grid-cols-3 sm:gap-x-3" data-hero-item>
               {['Private by default', 'Project evidence', 'Study habit data'].map((item) => (
                 <span key={item} className="flex items-center gap-2">
                   <CheckCircle2 className="h-4 w-4 text-black/70" />

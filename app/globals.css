@@ -257,6 +257,30 @@
       max-width: none;
     }
   }
+  @media (min-width: 1280px) {
+    .viewport-safe {
+      max-width: 48rem;
+    }
+    .viewport-artifact {
+      max-width: 52rem;
+    }
+  }
+  @media (min-width: 1536px) {
+    .viewport-safe {
+      max-width: 54rem;
+    }
+    .viewport-artifact {
+      max-width: 58rem;
+    }
+  }
+  @media (min-width: 1920px) {
+    .viewport-safe {
+      max-width: 62rem;
+    }
+    .viewport-artifact {
+      max-width: 66rem;
+    }
+  }
   .hero-artifact {
     position: relative;
     overflow: hidden;
@@ -636,7 +660,7 @@
 
   @media (min-width: 1024px) {
     .hero-title {
-      font-size: 4.25rem;
+      font-size: 4.5rem;
       line-height: 0.94;
     }
     .section-title {
@@ -647,10 +671,24 @@
     }
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     .hero-title {
-      font-size: 4.75rem;
+      font-size: 5.25rem;
       line-height: 0.93;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-title {
+      font-size: 6rem;
+      line-height: 0.92;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .hero-title {
+      font-size: 6.85rem;
+      line-height: 0.91;
     }
   }
 
