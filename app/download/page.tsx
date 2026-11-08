@@ -24,12 +24,12 @@ import {
 const DMG_ARM64_PATH =
   process.env.NEXT_PUBLIC_OTD_DMG_ARM64_URL?.trim() ||
   process.env.NEXT_PUBLIC_OTD_DMG_URL?.trim() ||
-  "https://github.com/0val-Wizard/otd-website/releases/download/v0.1.0/OTD-0.1.0-arm64.dmg";
+  "https://github.com/0val-Wizard/otd-website/releases/download/Silicon-V3.0.0/OTD-0.1.0-arm64-Silicon.dmg";
 
 const DMG_INTEL_PATH =
   process.env.NEXT_PUBLIC_OTD_DMG_X64_URL?.trim() ||
   process.env.NEXT_PUBLIC_OTD_DMG_INTEL_URL?.trim() ||
-  "https://github.com/0val-Wizard/otd-website/releases/download/v0.1.0/OTD-0.1.0-x64.dmg";
+  "https://github.com/0val-Wizard/otd-website/releases/download/Intel-V3.0.0/OTD-0.1.0-Intel.dmg";
 
 
 function AppleIcon({ className }: { className?: string }) {
