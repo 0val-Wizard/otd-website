@@ -18,12 +18,19 @@ import {
 } from 'lucide-react';
 
 /**
- * Override with NEXT_PUBLIC_OTD_DMG_URL for an external CDN / GitHub Releases URL.
- * Default serves the file from `public/downloads/` after `next build` (static export).
+ * Architecture-specific macOS .dmg download paths (external CDN / GitHub Releases URL).
+ * Defaults point to the official arm64 and x64 release artifacts.
  */
-const DMG_DOWNLOAD_PATH =
+const DMG_ARM64_PATH =
+  process.env.NEXT_PUBLIC_OTD_DMG_ARM64_URL?.trim() ||
   process.env.NEXT_PUBLIC_OTD_DMG_URL?.trim() ||
   "https://github.com/0val-Wizard/otd-website/releases/download/v0.1.0/OTD-0.1.0-arm64.dmg";
+
+const DMG_INTEL_PATH =
+  process.env.NEXT_PUBLIC_OTD_DMG_X64_URL?.trim() ||
+  process.env.NEXT_PUBLIC_OTD_DMG_INTEL_URL?.trim() ||
+  "https://github.com/0val-Wizard/otd-website/releases/download/v0.1.0/OTD-0.1.0-x64.dmg";
+
 
 function AppleIcon({ className }: { className?: string }) {
   return (
@@ -61,7 +68,7 @@ export default function DownloadPage() {
     <section className="flex flex-col min-h-screen">
       <MarketingHeader
         activePage="download"
-        ctaHref={DMG_DOWNLOAD_PATH}
+        ctaHref={DMG_ARM64_PATH}
         ctaLabel="Download"
         ctaDownload
       />
@@ -121,16 +128,29 @@ export default function DownloadPage() {
                       </Badge>
                     </div>
 
-                    <Button
-                      asChild
-                      size="lg"
-                      className="h-14 w-full rounded-full bg-white type-body font-bold text-black hover:bg-white/90"
-                    >
-                      <a href={DMG_DOWNLOAD_PATH} download className="flex items-center justify-center w-full">
-                        <Download className="mr-2 h-5 w-5" />
-                        Download for macOS
-                      </a>
-                    </Button>
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      <Button
+                        asChild
+                        size="lg"
+                        className="h-14 w-full rounded-full bg-white type-body-sm font-bold text-black hover:bg-white/90 transition-all duration-200"
+                      >
+                        <a href={DMG_ARM64_PATH} download className="flex items-center justify-center gap-2">
+                          <Download className="h-4 w-4 shrink-0" />
+                          <span>Apple Silicon</span>
+                        </a>
+                      </Button>
+
+                      <Button
+                        asChild
+                        size="lg"
+                        className="h-14 w-full rounded-full bg-white type-body-sm font-bold text-black hover:bg-white/90 transition-all duration-200"
+                      >
+                        <a href={DMG_INTEL_PATH} download className="flex items-center justify-center gap-2">
+                          <Download className="h-4 w-4 shrink-0" />
+                          <span>Intel Mac</span>
+                        </a>
+                      </Button>
+                    </div>
 
                     <p className="mt-6 text-center type-caption font-medium text-white/45">
                       Requires macOS 12 (Monterey) or later
@@ -192,7 +212,7 @@ export default function DownloadPage() {
                   {
                     step: '1',
                     title: 'Download',
-                    description: 'Click the download button above to get the OTD .dmg file.',
+                    description: 'Choose Apple Silicon or Intel above to get the matching .dmg file.',
                   },
                   {
                     step: '2',
@@ -299,11 +319,21 @@ export default function DownloadPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-14 rounded-full bg-white px-7 type-body font-bold text-black hover:bg-white/90"
+                  className="h-14 rounded-full bg-white px-7 type-body font-bold text-black hover:bg-white/90 transition-all duration-200"
                 >
-                  <a href={DMG_DOWNLOAD_PATH} download>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download for macOS
+                  <a href={DMG_ARM64_PATH} download className="flex items-center justify-center gap-2">
+                    <Download className="h-4 w-4 shrink-0" />
+                    <span>Apple Silicon</span>
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-14 rounded-full bg-white px-7 type-body font-bold text-black hover:bg-white/90 transition-all duration-200"
+                >
+                  <a href={DMG_INTEL_PATH} download className="flex items-center justify-center gap-2">
+                    <Download className="h-4 w-4 shrink-0" />
+                    <span>Intel Mac</span>
                   </a>
                 </Button>
               </div>

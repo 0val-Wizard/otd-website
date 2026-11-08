@@ -623,8 +623,8 @@
       font-size: 4.5rem;
     }
     .hero-title {
-      font-size: 5.5rem;
-      line-height: 0.92;
+      font-size: 3.75rem;
+      line-height: 0.95;
     }
     .section-title {
       font-size: 4.5rem;
@@ -636,13 +636,21 @@
 
   @media (min-width: 1024px) {
     .hero-title {
-      font-size: 7rem;
+      font-size: 4.25rem;
+      line-height: 0.94;
     }
     .section-title {
       font-size: 5.75rem;
     }
     .cta-title {
       font-size: 6.25rem;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-title {
+      font-size: 4.75rem;
+      line-height: 0.93;
     }
   }
 

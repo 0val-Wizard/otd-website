@@ -8,6 +8,8 @@ out/
 # misc
 .DS_Store
 *.pem
+*.tsbuildinfo
+website_inspi/
 
 # debug
 npm-debug.log*
