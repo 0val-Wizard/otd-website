@@ -79,6 +79,7 @@
   }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
     background: hsl(var(--background));
   }
 
@@ -185,10 +186,10 @@
     letter-spacing: 0;
   }
   .hero-title {
-    font-size: 3.75rem;
+    font-size: clamp(2.75rem, 4.2vw + 0.5rem, 6rem);
     font-weight: 820;
-    letter-spacing: 0;
-    line-height: 0.94;
+    letter-spacing: -0.025em;
+    line-height: 0.95;
   }
   .section-title {
     font-size: 3rem;
@@ -236,10 +237,12 @@
     background: hsl(38 16% 93%);
   }
   .viewport-safe {
-    max-width: calc(100vw - 2.5rem);
+    width: 100%;
+    max-width: 100%;
   }
   .viewport-artifact {
-    max-width: calc(100vw - 2.5rem);
+    width: 100%;
+    max-width: 100%;
   }
   .viewport-cta {
     width: calc(100vw - 2.5rem);
@@ -247,38 +250,51 @@
   }
   @media (min-width: 640px) {
     .viewport-safe {
-      max-width: 42rem;
+      max-width: 100%;
     }
     .viewport-artifact {
-      max-width: 46rem;
+      max-width: 100%;
+      width: 100%;
     }
     .viewport-cta {
       width: auto;
       max-width: none;
     }
   }
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .viewport-safe {
-      max-width: 48rem;
+      max-width: 100%;
     }
     .viewport-artifact {
-      max-width: 52rem;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  @media (min-width: 1280px) {
+    .viewport-safe {
+      max-width: 100%;
+    }
+    .viewport-artifact {
+      max-width: 100%;
+      width: 100%;
     }
   }
   @media (min-width: 1536px) {
     .viewport-safe {
-      max-width: 54rem;
+      max-width: 100%;
     }
     .viewport-artifact {
-      max-width: 58rem;
+      max-width: 100%;
+      width: 100%;
     }
   }
   @media (min-width: 1920px) {
     .viewport-safe {
-      max-width: 62rem;
+      max-width: 100%;
     }
     .viewport-artifact {
-      max-width: 66rem;
+      max-width: 100%;
+      width: 100%;
     }
   }
   .hero-artifact {
@@ -647,7 +663,7 @@
       font-size: 4.5rem;
     }
     .hero-title {
-      font-size: 3.75rem;
+      font-size: 3.25rem;
       line-height: 0.95;
     }
     .section-title {
@@ -660,8 +676,34 @@
 
   @media (min-width: 1024px) {
     .hero-title {
+      font-size: 3.25rem;
+      line-height: 0.95;
+    }
+    .section-title {
       font-size: 4.5rem;
+    }
+    .cta-title {
+      font-size: 5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-title {
+      font-size: 3.65rem;
       line-height: 0.94;
+    }
+    .section-title {
+      font-size: 5.25rem;
+    }
+    .cta-title {
+      font-size: 5.75rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-title {
+      font-size: 4.75rem;
+      line-height: 0.92;
     }
     .section-title {
       font-size: 5.75rem;
@@ -671,24 +713,18 @@
     }
   }
 
-  @media (min-width: 1280px) {
-    .hero-title {
-      font-size: 5.25rem;
-      line-height: 0.93;
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .hero-title {
-      font-size: 6rem;
-      line-height: 0.92;
-    }
-  }
-
   @media (min-width: 1920px) {
     .hero-title {
-      font-size: 6.85rem;
+      font-size: 5.35rem;
       line-height: 0.91;
+    }
+  }
+
+  /* Compact height adjustment for laptops (e.g. 13"-16" MacBooks with viewports <= 820px) */
+  @media (min-width: 1024px) and (max-height: 820px) {
+    .hero-title {
+      font-size: 3.15rem;
+      line-height: 0.95;
     }
   }
 
