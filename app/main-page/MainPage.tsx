@@ -64,7 +64,7 @@ const habits = [
 function HeroArtifact() {
   return (
     <div className="viewport-artifact relative mx-auto w-full min-w-0" data-hero-item>
-      <div className="absolute -left-10 top-8 z-20 hidden w-44 rounded-[1.35rem] bg-white p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
+      <div className="absolute -left-20 xl:-left-36 -top-6 xl:-top-8 z-20 hidden w-44 rounded-[1.35rem] bg-white p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
         <div className="flex items-center gap-2 type-label font-bold text-black/45">
           <TriangleAlert className="h-4 w-4 text-[#f4a43d]" />
           Drift
@@ -73,7 +73,7 @@ function HeroArtifact() {
         <p className="mt-2 type-caption text-black/55">YouTube appeared between research and slide work.</p>
       </div>
 
-      <div className="absolute -right-4 -bottom-6 z-20 hidden w-52 rounded-[1.35rem] bg-[#f6f2e8] p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
+      <div className="absolute -right-6 xl:-right-12 -bottom-12 xl:-bottom-16 z-20 hidden w-52 rounded-[1.35rem] bg-[#f6f2e8] p-4 shadow-[0_24px_70px_-45px_rgba(0,0,0,0.85)] ring-1 ring-black/10 lg:block">
         <div className="flex items-center gap-2 type-label font-bold text-black/45">
           <CalendarClock className="h-4 w-4 text-[#7f70f1]" />
           Due next
@@ -204,7 +204,7 @@ function HeroArtifact() {
 
 function HeroSection() {
   return (
-    <section className="student-hero relative overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 lg:pb-16">
+    <section className="student-hero relative overflow-hidden pt-14 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
       <div className="surface-noise absolute inset-0" />
 
       <div className="relative mx-auto max-w-[92rem] px-5 sm:px-8 lg:px-10">
