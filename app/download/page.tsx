@@ -68,9 +68,8 @@ export default function DownloadPage() {
     <section className="flex flex-col min-h-screen">
       <MarketingHeader
         activePage="download"
-        ctaHref={DMG_ARM64_PATH}
+        ctaHref="/download"
         ctaLabel="Download"
-        ctaDownload
       />
 
       <div className="pt-[5rem]">
@@ -103,7 +102,7 @@ export default function DownloadPage() {
           </section>
 
           {/* OS Cards */}
-          <section className="relative pb-32">
+          <section id="download-options" className="scroll-mt-24 relative pb-32">
             <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
               <div className="grid gap-y-12 md:grid-cols-2 md:gap-x-6">
                 {/* macOS Card */}

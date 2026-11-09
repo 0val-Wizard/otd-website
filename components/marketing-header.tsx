@@ -152,6 +152,26 @@ export function MarketingHeader({
   const ctaClassName =
     'download-cta download-cta--nav h-9.5 rounded-full px-4 pr-5 type-body-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 shadow-sm';
 
+  const handleCtaClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, isMobile = false) => {
+      if (isMobile) setMobileOpen(false);
+
+      if (activePage === 'download') {
+        const el = document.getElementById('download-options') || document.getElementById('platforms');
+        if (el) {
+          e.preventDefault();
+          const yOffset = -92;
+          const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        } else {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    },
+    [activePage]
+  );
+
   const renderCta = (mobile = false) => {
     const className = mobile
       ? 'download-cta h-12 w-full rounded-full px-4 type-body-sm font-semibold transition-all duration-300'
@@ -178,7 +198,7 @@ export function MarketingHeader({
 
     return (
       <Button asChild size={mobile ? undefined : 'sm'} className={className}>
-        <Link href={ctaHref} onClick={() => setMobileOpen(false)}>
+        <Link href={ctaHref} onClick={(e) => handleCtaClick(e, mobile)}>
           {content}
         </Link>
       </Button>
